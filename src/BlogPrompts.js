@@ -81,80 +81,45 @@ function BlogPrompts() {
 <li>Wait for ChatGPT's response.</li>
 <li>Enter Command 2.</li>
 <li>Wait for ChatGPT's response.</li>
-<li>Enter Command 3.</li>
-<li>Wait for ChatGPT's response.</li>
 <li>Copy the content provided by ChatGPT.</li></p></section>
-      <section>
-<h3>Command 1:</h3>
-<textarea
-  readOnly
-  rows={5}
-  cols={40}
-  value={`I am going to provide you instructions on how to appropriately write a keyword-focused blog. So please listen.`}
-/></section>
+      
 
       <section>
-        <h3>Command 2:</h3>
+        <h3>Command 1:</h3>
 
         <textarea
   readOnly
           rows={10}
   cols={40}
-  value={`Blog Guidelines
+  value={`ChatGPT, I need you to write a keyword-focused blog post following these guidelines:
 
-Come from the optics of delivering info as the expert in an elementary form!
-Remember you are writing as a ghostwriter for the owner of the business.
-Be the expert for them but readable for Google's reading algorithm - it is not that advanced.
-Make sure the entire page can answer: who, what, when, where, why, and how.
-Minimum 600-800 words (does not have to be 800).
-
-IMPORTANT:
-Title of Blog needs to include Keyword.
-Should be a variant of a question and/or answer.
-
-Examples:
-
-Keyword: auto shop
-Location: Denver
-Search Engine question typed in by user: best Honda auto shop near me
-Blog title idea: Looking for the best auto shop in Denver?
-However, the intro paragraph you will talk about Honda.
-
-Keyword: accident lawyer
-Location: Denver
-Search Engine question typed in by user: What to do when you get in a car accident?
-Blog title idea: Research the best lawyers in Denver immediately after a car accident.
-
-Blog Layout:
+Write from the perspective of an expert, but make it readable for Google's algorithm.
+The blog post should answer: who, what, when, where, why, and how.
+The blog post must be between 600-800 words.
+The blog title should include the keyword and should be a variant of a question and/or answer.
+The blog layout should be as follows:
 Blog Title
-
 Paragraph #1
-
-Title of Paragraph #2 
-
+Title of Paragraph #2
 Paragraph #2
-
-Title of Paragraph #3: This title should reflect value propositions of the keywords
-
-Paragraph #3: Write a 2-3 sentence snapshot of 3 value propositions of the keywords. List the 3 value propositions of the keywords in bullet points. Each bullet point should be 1-3 sentences long. Always include bullet points no exceptions.
-
+Title of Paragraph #3 (should reflect value propositions of the keywords)
+Paragraph #3 (2-3 sentence snapshot of 3 value propositions of the keywords in bullet points)
 Title of Closing Paragraph #4
-
 Closing Paragraph #4
-
-Call to Action Closing Sentence: 1-2 sentences, include keyword, name of business, and phone number.
-
-Instructions to ChatGPT:
-Do not use titles like Value Propositions or Paragraph Title, Introduction, Conclusion, Closing Paragraph, or anything like this.  Titles should be unique and related to the company or topic. Only include title and text in your response that the consumer should see. When listing a phone number in the post, insert the text "[INSERT PHONE NUMBER HERE]" in parenthesis where the phone number should go.  When listing a phone number in the post, insert the text "[INSERT URL HERE]" in parenthesis where the phone number should go. Do not link to outside websites.  Do not assume any information about the products or services that are provided unless specified in the given keywords.  Follow all instructions precisely.
-
-Do not give me a brief summary of this information i just provided you.  Just acknowledge if you understand.`}
+Call to Action Closing Sentence (1-2 sentences, include keyword, name of business, and phone number)
+Do not use generic titles like 'Value Propositions', 'Paragraph Title', 'Introduction', 'Conclusion', 'Closing Paragraph', etc. Titles should be unique and related to the company or topic.  Do not mention these words in any sentence or title.
+When listing a phone number in the post, insert the text '[INSERT PHONE NUMBER HERE]' where the phone number should go. When listing a URL in the post, insert the text '[INSERT URL HERE]' where the URL should go.
+Do not link to outside websites.
+Do not assume any information about the products or services that are provided unless specified in the given keywords.
+Follow all these instructions precisely.
+Please acknowledge if you understand these instructions.`}
 />
 
         
         
 </section>
       
-      <h3>Command 3:</h3>
+      <h3>Command 2:</h3>
       <div className="dropdown-container">
         <select className="dropdown" onChange={handleClientChange}>
           <option value="">Select a client</option>
