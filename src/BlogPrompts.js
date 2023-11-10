@@ -45,6 +45,10 @@ const clients = [
   {
     name: 'Patriot Forklifts',
     info: 'Now write me a SEO keyword focused blog around "{keyword}" for a business named Patriot Forklifts using the instructed format.'
+  },
+  {
+    name: 'We Are Aerial',
+    info: 'Now write me a SEO keyword focused blog around "{keyword}" for a business named We Are Aerial using the instructed format.'
   }
 ];
 
