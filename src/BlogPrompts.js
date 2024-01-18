@@ -7,8 +7,8 @@ const clients = [
     info: 'Now write me a SEO keyword focused blog around "{keyword}" for a business named Octane Performance Training using the instructed format.'
   },
   {
-    name: '11s Gentlemens Club',
-    info: 'Now write me a SEO keyword focused blog around "{keyword}" for a business named 11s Gentlemens Club using the instructed format.'
+    name: 'Dimes Cabaret',
+    info: 'Now write me a SEO keyword focused blog around "{keyword}" for a business named Dimes Cabaret using the instructed format.'
   },
   {
     name: 'Rippe Dental Associates',
