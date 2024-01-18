@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/client-post-prompts/static/css/main.dae5a9ef.css",
-    "main.js": "/client-post-prompts/static/js/main.2943f738.js",
+    "main.css": "/client-post-prompts/static/css/main.96a919c5.css",
+    "main.js": "/client-post-prompts/static/js/main.89e374b0.js",
     "static/media/Landscape_We-Are-Aerial-Full-Color.png": "/client-post-prompts/static/media/Landscape_We-Are-Aerial-Full-Color.bd4998d007779b7c4420.png",
     "index.html": "/client-post-prompts/index.html",
-    "main.dae5a9ef.css.map": "/client-post-prompts/static/css/main.dae5a9ef.css.map",
-    "main.2943f738.js.map": "/client-post-prompts/static/js/main.2943f738.js.map"
+    "main.96a919c5.css.map": "/client-post-prompts/static/css/main.96a919c5.css.map",
+    "main.89e374b0.js.map": "/client-post-prompts/static/js/main.89e374b0.js.map"
   },
   "entrypoints": [
-    "static/css/main.dae5a9ef.css",
-    "static/js/main.2943f738.js"
+    "static/css/main.96a919c5.css",
+    "static/js/main.89e374b0.js"
   ]
 }
