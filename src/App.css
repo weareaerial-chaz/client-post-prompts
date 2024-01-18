@@ -76,7 +76,8 @@ body::-webkit-scrollbar-track {
   color: #333;
 }
 
-.keyword-input button {
+.keyword-input button,
+.blogcopy {
   background-color: #39FF14;
   color: #fff;
   border: none;
@@ -87,7 +88,8 @@ body::-webkit-scrollbar-track {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.keyword-input button:hover {
+.keyword-input button:hover,
+.blogcopy:hover {
   background-color: #2DAD12;
 }
 
@@ -96,7 +98,9 @@ body::-webkit-scrollbar-track {
   text-align: left;
 }
 
-.copy-success-message, .error-message {
+.copy-success-message,
+.error-message,
+.copy-success {
   margin-top: 10px;
   padding: 10px;
   border-radius: 5px;
@@ -104,7 +108,8 @@ body::-webkit-scrollbar-track {
   display: inline-block;
 }
 
-.copy-success-message {
+.copy-success-message,
+.copy-success {
   background-color: #28A745;
   color: #fff;
 }
@@ -144,8 +149,6 @@ li {
   }
 }
 
-
-/* Header Styles */
 .header {
   background-color: #0074FF;
   color: #fff;
@@ -155,7 +158,6 @@ li {
   justify-content: space-between;
 }
 
-/* Navigation Styles */
 .navbar {
   display: flex;
   justify-content: center;
@@ -166,10 +168,8 @@ li {
 .nav-button {
   background-color: #39FF14;
   color: #fff;
-  /* Other button styles... */
 }
 
-/* Card Styles for Client Info */
 .card {
   background-color: #fff;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -178,9 +178,32 @@ li {
   margin-bottom: 20px;
 }
 
-/* Responsive Design */
 @media screen and (max-width: 768px) {
   .navbar {
     flex-direction: column;
   }
+}
+
+.main-buttons {
+  background-color: #0074FF;
+  color: #FFFFFF;
+  padding: 12px 24px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 10px;
+  font-weight: bold;
+}
+
+.main-buttons:hover {
+  background-color: #0056b3;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.main-buttons:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }

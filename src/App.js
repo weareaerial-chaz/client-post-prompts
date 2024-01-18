@@ -20,8 +20,11 @@ function App() {
   return (
     <div className="App">
       <div className="button-container">
-        <img src={logoImage} alt="We Are Aerial" style={{ width: '300px', height: 'auto' }} />
+        <a href="https://www.weareaerial.com"><img src={logoImage} alt="We Are Aerial" style={{ width: '300px', height: 'auto' }} /> </a>
         <br />
+        <br />
+        <br />
+
         <button className="main-buttons" onClick={() => handleOptionClick(OPTIONS.SOCIAL_MEDIA)}>
           <b>Social Media Content</b>
         </button>

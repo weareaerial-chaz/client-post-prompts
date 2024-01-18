@@ -57,6 +57,7 @@ function SocialMediaPostPreview({ clientInfo, keyword }) {
   );
 }
 
+
 function SocialMediaPrompts() {
   const [selectedClient, setSelectedClient] = useState(null);
   const [keyword, setKeyword] = useState('');

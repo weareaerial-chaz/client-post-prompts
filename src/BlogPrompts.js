@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useRef } from 'react';
 import './App.css';
 
 // Clients array
@@ -77,14 +77,19 @@ function BlogPrompts() {
   const [selectedClientIndex, setSelectedClientIndex] = useState(null);
   const [keyword, setKeyword] = useState('');
   const [copySuccess, setCopySuccess] = useState('');
+  const [error, setError] = useState('');
+  const command1Ref = useRef(null); // Declare command1Ref here
+
 
   const handleClientChange = (event) => {
     setSelectedClientIndex(event.target.value !== '' ? parseInt(event.target.value, 10) : null);
+    setError(''); // Reset error on client change
   };
 
   const handleKeywordChange = (event) => {
     setKeyword(event.target.value);
     setCopySuccess(''); // Reset copy success message on keyword change
+    setError(''); // Reset error on keyword change
   };
 
   const infoText = useMemo(
@@ -93,13 +98,30 @@ function BlogPrompts() {
   );
 
   const handleCopyClick = () => {
+    if (selectedClientIndex === null) {
+      setError('Please select a client.');
+      return;
+    }
+
+    if (!keyword) {
+      setError('Please enter a keyword.');
+      return;
+    }
+
     navigator.clipboard.writeText(infoText)
-      .then(() => setCopySuccess('Text copied to clipboard!'))
-      .catch(() => setCopySuccess('Failed to copy text.'));
+      .then(() => {
+        setCopySuccess('Text copied to clipboard!');
+        setError(''); // Clear any existing errors
+      })
+      .catch(() => {
+        setError('Failed to copy text. Please try again.');
+        setCopySuccess(''); // Clear any success message
+      });
   };
 
   const command1Text = `ChatGPT, I need you to write a keyword-focused blog post following these guidelines:
- Write from the perspective of an expert, but make it readable for Google's algorithm.
+
+Write from the perspective of an expert, but make it readable for Google's algorithm.
 The blog post should answer: who, what, when, where, why, and how.
 The blog post must be between 600-800 words.
 The blog title should include the keyword and should be a variant of a question and/or answer.
@@ -120,32 +142,46 @@ Do not assume any information about the products or services that are provided u
 Follow all these instructions precisely.
 Please acknowledge if you understand these instructions.`;
 
-  return (
+const handleCopyCommand1 = () => {
+  if (command1Ref.current) {
+    navigator.clipboard.writeText(command1Ref.current.value)
+      .then(() => {
+        setCopySuccess('Text copied to clipboard!');
+        setError('');
+      })
+      .catch(() => {
+        setError('Failed to copy Text. Please try again.');
+        setCopySuccess('');
+      });
+  }
+};
+
+ return (
     <div className="App">
       <section><h2>AI Blog Post Prompts</h2></section>
-      <section>
-        <p>To interact with ChatGPT and obtain the desired response, follow these simplified instructions:<br></br><br></br>
-          <li>Enter Command 1 into ChatGPT.</li>
-          <li>Wait for ChatGPT's response.</li>
-          <li>Enter Command 2.</li>
-          <li>Wait for ChatGPT's response.</li>
-          <li>Copy the content provided by ChatGPT.</li>
-        </p>
-      </section>
+
       <section>
         <h3>Command 1:</h3>
-        <CommandTextarea value={command1Text} />
+        <div className="command-input">
+          <textarea ref={command1Ref} readOnly rows={10} cols={40} value={command1Text} />
+          <button className="blogcopy" onClick={handleCopyCommand1}>Copy Text</button>
+        </div>
       </section>
-      <h3>Command 2:</h3>
-      <ClientSelector clients={clients} onClientChange={handleClientChange} />
-      {selectedClientIndex !== null && (
-        <ClientInfo
-          client={clients[selectedClientIndex]}
-          keyword={keyword}
-          onKeywordChange={handleKeywordChange}
-          onCopyClick={handleCopyClick}
-        />
-      )}
+
+      <section>
+        <h3>Command 2:</h3>
+        <ClientSelector clients={clients} onClientChange={handleClientChange} />
+        {selectedClientIndex !== null && (
+          <ClientInfo
+            client={clients[selectedClientIndex]}
+            keyword={keyword}
+            onKeywordChange={handleKeywordChange}
+            onCopyClick={handleCopyClick}
+          />
+        )}
+      </section>
+
+      {error && <p className="error-message">{error}</p>}
       {copySuccess && <p className="copy-success-message">{copySuccess}</p>}
     </div>
   );
