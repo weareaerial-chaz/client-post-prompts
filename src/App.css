@@ -1,91 +1,186 @@
 body {
-  background-color: #000F1E;
-  color: #fff;
+  background-color: #F4F7FA;
+  color: #333;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
   scrollbar-width: thin;
-  scrollbar-color: transparent transparent;
+  scrollbar-color: #0074FF #F4F7FA;
 }
 
-.App {
-  text-align: center;
-  margin: 20px;
-
-}
 body::-webkit-scrollbar {
   width: 8px;
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: transparent;
+  background-color: #0074FF;
+  border-radius: 4px;
 }
 
 body::-webkit-scrollbar-track {
-  background-color: transparent;
-}
-.main-buttons {
-  margin: 10px;
+  background-color: #F4F7FA;
 }
 
-.main-buttons {
-  background-color: #39FF14;
-  color: #000F1E;
-  padding: 10px;
-  width: 200px;
-  font-size: 15px;
+.App {
+  text-align: center;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.main-buttons {
-  background-color: #45a049;
+.dropdown-container,
+.client-info {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .dropdown {
   background-color: #0074FF;
   color: #fff;
-  padding: 10px;
+  padding: 10px 20px;
+  border: none;
   border-radius: 5px;
+  margin-bottom: 20px;
+  width: 100%;
+  cursor: pointer;
 }
 
 .client-info {
-  margin: 20px auto;
-  padding: 20px;
-  max-width: 500px;
-  border: 1px solid #000F1E;
-  border-radius: 4px;
   background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  color: #000F1E;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .client-info h2 {
-  color: #000;
+  color: #0074FF;
+  margin-bottom: 20px;
+}
+
+.keyword-input {
+  display: flex;
+  gap: 10px;
+  width: 100%;
 }
 
 .keyword-input input {
-  border: 1px solid #000;
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #0074FF;
+  border-radius: 5px;
+  color: #333;
 }
 
 .keyword-input button {
   background-color: #39FF14;
-  color: #000F1E;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .keyword-input button:hover {
-  background-color: #45a049;
+  background-color: #2DAD12;
 }
 
 .client-info p {
-  color: #000;
+  color: #333;
+  text-align: left;
 }
 
-hr {
-  height: 5px;
- background: #fff;
+.copy-success-message, .error-message {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  display: inline-block;
 }
 
-h2 {
-  font-size: 32px;
-  color: #00FFF0
+.copy-success-message {
+  background-color: #28A745;
+  color: #fff;
+}
+
+.error-message {
+  background-color: #DC3545;
+  color: #fff;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #D3D3D3;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+}
+
+h2, h3 {
+  color: #0074FF;
 }
 
 li {
   list-style-type: none;
+  color: #333;
+}
+
+@media screen and (max-width: 768px) {
+  .dropdown-container,
+  .client-info {
+    max-width: 100%;
+  }
+
+  .keyword-input {
+    flex-direction: column;
+  }
+}
+
+
+/* Header Styles */
+.header {
+  background-color: #0074FF;
+  color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Navigation Styles */
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.nav-button {
+  background-color: #39FF14;
+  color: #fff;
+  /* Other button styles... */
+}
+
+/* Card Styles for Client Info */
+.card {
+  background-color: #fff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+  }
 }

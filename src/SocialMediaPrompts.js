@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 
+// Clients array
 const clients = [
   {
     name: 'Octane Performance Training',
@@ -45,25 +46,43 @@ const clients = [
   // Add more clients as needed
 ];
 
-
+function SocialMediaPostPreview({ clientInfo, keyword }) {
+  if (!clientInfo) return null;
+  const formattedInfo = clientInfo.info.replace('{keyword}', keyword);
+  return (
+    <div className="social-media-preview">
+      <h2>{clientInfo.name}</h2>
+      <p>{formattedInfo}</p>
+    </div>
+  );
+}
 
 function SocialMediaPrompts() {
-  const [selectedClientIndex, setSelectedClientIndex] = useState(null);
+  const [selectedClient, setSelectedClient] = useState(null);
   const [keyword, setKeyword] = useState('');
+  const [error, setError] = useState('');
+  const [copySuccess, setCopySuccess] = useState('');
 
   const handleClientChange = (event) => {
-    const selectedClientIndex = event.target.value !== '' ? parseInt(event.target.value) : null;
-    setSelectedClientIndex(selectedClientIndex);
+    const clientIndex = event.target.value;
+    setSelectedClient(clientIndex !== '' ? clients[clientIndex] : null);
   };
 
   const handleKeywordChange = (event) => {
     setKeyword(event.target.value);
+    if (error) setError('');
+    if (copySuccess) setCopySuccess('');
   };
 
   const handleCopyClick = () => {
-    const infoText = clients[selectedClientIndex].info.replace('{keyword}', keyword);
-    navigator.clipboard.writeText(infoText);
-    alert('Text copied to clipboard!');
+    if (!keyword) {
+      setError('Please enter a keyword.');
+      return;
+    }
+    const infoText = selectedClient.info.replace('{keyword}', keyword);
+    navigator.clipboard.writeText(infoText)
+      .then(() => setCopySuccess('Text copied to clipboard!'))
+      .catch(() => setError('Failed to copy text.'));
   };
 
   return (
@@ -79,16 +98,15 @@ function SocialMediaPrompts() {
           ))}
         </select>
       </div>
-      {selectedClientIndex !== null && (
-        <div className="client-info">
-          <h2>{clients[selectedClientIndex].name}</h2>
-          <div className="keyword-input">
-            <input type="text" value={keyword} onChange={handleKeywordChange} placeholder="Enter keyword prompt" />
-           <button onClick={handleCopyClick}>Copy Text</button>
-          </div>
-          <p>{clients[selectedClientIndex].info.replace('{keyword}', keyword)}</p>
+      <div className="client-info">
+        <div className="keyword-input">
+          <input type="text" value={keyword} onChange={handleKeywordChange} placeholder="Enter keyword prompt" />
+          <button onClick={handleCopyClick}>Copy Text</button>
         </div>
-      )}
+        {error && <p className="error-message">{error}</p>}
+        {copySuccess && <p className="copy-success">{copySuccess}</p>}
+        <SocialMediaPostPreview clientInfo={selectedClient} keyword={keyword} />
+      </div>
     </div>
   );
 }

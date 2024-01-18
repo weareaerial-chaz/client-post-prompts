@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import './App.css';
 
+// Clients array
 const clients = [
   {
     name: 'Octane Performance Training',
@@ -75,28 +76,30 @@ const ClientInfo = ({ client, keyword, onKeywordChange, onCopyClick }) => (
 function BlogPrompts() {
   const [selectedClientIndex, setSelectedClientIndex] = useState(null);
   const [keyword, setKeyword] = useState('');
+  const [copySuccess, setCopySuccess] = useState('');
 
   const handleClientChange = (event) => {
-    setSelectedClientIndex(event.target.value !== '' ? parseInt(event.target.value) : null);
+    setSelectedClientIndex(event.target.value !== '' ? parseInt(event.target.value, 10) : null);
   };
 
   const handleKeywordChange = (event) => {
     setKeyword(event.target.value);
+    setCopySuccess(''); // Reset copy success message on keyword change
   };
 
   const infoText = useMemo(
     () => selectedClientIndex !== null ? clients[selectedClientIndex].info.replace('{keyword}', keyword) : '',
-    [clients, selectedClientIndex, keyword]
+    [selectedClientIndex, keyword]
   );
 
   const handleCopyClick = () => {
-    navigator.clipboard.writeText(infoText);
-    alert('Text copied to clipboard!');
+    navigator.clipboard.writeText(infoText)
+      .then(() => setCopySuccess('Text copied to clipboard!'))
+      .catch(() => setCopySuccess('Failed to copy text.'));
   };
 
   const command1Text = `ChatGPT, I need you to write a keyword-focused blog post following these guidelines:
-  
-Write from the perspective of an expert, but make it readable for Google's algorithm.
+ Write from the perspective of an expert, but make it readable for Google's algorithm.
 The blog post should answer: who, what, when, where, why, and how.
 The blog post must be between 600-800 words.
 The blog title should include the keyword and should be a variant of a question and/or answer.
@@ -143,6 +146,7 @@ Please acknowledge if you understand these instructions.`;
           onCopyClick={handleCopyClick}
         />
       )}
+      {copySuccess && <p className="copy-success-message">{copySuccess}</p>}
     </div>
   );
 }
